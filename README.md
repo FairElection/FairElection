@@ -1,4 +1,4 @@
-# Finding-Significant-Items
+# Fair Election: A Generic Framework for Data Stream Processing
 
 ## Introduction
 
@@ -14,19 +14,19 @@ The file "LTC" denotes our algorithm.
 
 We use 3 real datasets and synthetic datasets in our experiments.
 
-Social: This dataset comes from a real social network, which includes users' message and the sending time. We regard the username of the sender of a message as an item ID and the sending time of a message as the timestamp. This dataset contains 1.5M messages, and we divide it into 200 periods with a fixed time interval.
+CAIDA: This dataset is from CAIDA Anonymized Internet Trace 2016, consisting of source IP address, destination address, source port, destination port, and protocol type. We use the source IP addresses to identify the items and choose the first 10M packets as our CAIDA dataset.
 
-Network: This is a temporal network of interactions on the stack exchange web site. Each item consists of three values u,v,t, which means user u answered user v's question at time t. We regard u as an item ID and t as the timestamp. This dataset contains 10M items, and we divide it into 1000 periods with a fixed time interval. 
+Campus: This dataset is from our campus. Similar to the CAIDA dataset, it consists of 5-tuples.We still use the source IP addresses to identify the items and choose the first 10M packets as our Campus dataset.
 
-CAIDA: This dataset is from CAIDA Anonymized Internet Trace 2016, consisting of IP packets (source IP address, destination IP address, source port, destination port, and protocol type). We regard the source IP address of a packet as an item ID and the index as the timestamp. This dataset contains 10M packets, and we divide it into 500 periods with a fixed time interval.
+Synthetic: According to the Zipf distribution, we generate 5 different datasets with different skewness (from 0.6 to 3.0). Each dataset has 10M packets. The default skewness of Synthetic dataset is 0.6.
 
-Synthetic: We generated 5 different datasets according to Zipfian distribution by Web Polygraph, with different skewness from 0.6 to 3.0. We regard the index as the timestamp. Each dataset contains 10M items, and we divide it into 1000 periods at a fixed time interval. We do not conduct experiments on finding persistent items and finding significant items on Synthetic datasets, because every item is distributed randomly, thus the persistent items are always the same as the frequent items on Synthetic datasets.
+Webpage: This dataset is from the web HTML documents. It consists of 5-tuples, and we use the source IP addresses to identify the items and choose the first 10M packets as our Webpage dataset.
 
 ## How to run
 
 Suppose you've already cloned the repository and start from the Codes directory.
 
-You can use g++ to complile this code (e.g., g++ xxx.cpp -o xxx.exe).
+You can use g++ to complile the main code in the directeries (e.g., g++ xxx.cpp -o xxx.exe).
 
 You will be asked to input some parameters (e.g., memory size, standard of 'top'), please read files to detail it.
 
