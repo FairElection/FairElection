@@ -2,15 +2,13 @@
 
 ## Introduction
 
-Finding top-k frequent items has been a hot issue in data bases. Finding top-k persistent items is a new issue, and has attracted increasing attention in recent years. In practice, users often want to know which items are significant, i.e., not only frequent but also persistent. No prior art can address both of the above two issues at the same time. Also, for high-speed data streams, they cannot achieve high accuracy when the memory is tight. In this paper, we define a new issue, named finding top-k significant items, and propose a novel algorithm namely LTC to handle that issue. LTC can accurately report top-k significant items with tight memory. It includes two key techniques: Long-tail Replacement and a modified CLOCK algorithm. To prove the effectiveness of LTC, we theoretically prove there is no overestimation error and derive the correct rate and error bound. We further conduct extensive experiments on real datasets and synthetic datasets. The experimental results show that LTC achieves 300~10^8 and in average 10^5 times higher accuracy than other related algorithms.
+Data stream processing has become an important area over the recent years. Storing data streams exactly as they come is often too memory-consuming, as well as unnecessary. Although a data stream can be large in size, very often one only cares about a very small part of it, e.g., its items that are largest in terms of a certain property. Existing works propose solutions for a specific property, such as finding frequent items or caching recent items. This paper targets a more generic goal: finding the top-k items for a given property. The state-of-the-art solutions use a data structure named Stream-Summary, which evicts the globally smallest item in the min-heap when incoming items arrive, using different eviction strategies. Stream-Summary is similar to a min-heap: it can locate the smallest item in O(1) time, but needs much more memory than the min-heap. Therefore, existing solutions are not memory efficient and accurate. To address this issue, we propose a generic framework, namely Fair Election , in two versions. The basic version finds and evicts the smallest item, so as to achieve time and space efficiency, at the cost of unfairness in the worst case. Our second and optimized version minimizes unfairness. We applied our framework to Space-Saving and the classic LRU eviction algorithm. Theoretical analysis and experimental results show that after using our framework, the accuracy is improved by up to 800 times, and the speed is improved by up to 1.3 times.
 
 ## About the source codes and datasets.
 
-There are three documents. The name of the document means the application of the algorithms in the document.
+There are two documents. The name of the documents denontes the application of the algorithms in the document.
 
 For each document, there are several files in it. All mentioned algorithms in Paper are provided.
-
-The file "LTC" denotes our algorithm.
 
 We use 3 real datasets and synthetic datasets in our experiments.
 
