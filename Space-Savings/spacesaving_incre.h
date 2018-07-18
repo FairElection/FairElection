@@ -1,5 +1,5 @@
-#ifndef _spacesaving_H
-#define _spacesaving_H
+#ifndef _spacesaving_incre_H
+#define _spacesaving_incre_H
 
 #include <cmath>
 #include <cstdio>
@@ -14,13 +14,13 @@
 #include "BOBHASH64.h"
 #define rep(i,a,n) for(int i=a;i<=n;i++)
 using namespace std;
-class spacesaving
+class spacesaving_incre
 {
     private:
         ssummary *ss;
         int M2;
     public:
-        spacesaving(int M2):M2(M2) {ss=new ssummary(M2); ss->clear();}
+        spacesaving_incre(int M2):M2(M2) {ss=new ssummary(M2); ss->clear();}
         void Insert(string x)
         {
             bool mon=false;

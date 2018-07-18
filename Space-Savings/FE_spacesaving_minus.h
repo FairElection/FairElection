@@ -1,5 +1,5 @@
-#ifndef _dd_spacesaving1_H
-#define _dd_spacesaving1_H
+#ifndef _FE_spacesaving_minus_H
+#define _FE_spacesaving_minus_H
 
 #include <cmath>
 #include <cstdio>
@@ -11,13 +11,13 @@
 #include "BOBHASH32.h"
 #include "BOBHASH64.h"
 using namespace std;
-class dd_spacesaving1
+class FE_spacesaving_minus
 {
     public:
         int M,C,num;
         struct kv {int ID; int f;} SS[100005][35],Heap[1005];  // Heap denotes L2
         BOBHash32 * bobhash;
-        dd_spacesaving1(int M,int C,int num):M(M),C(C),num(num) {bobhash = new BOBHash32(1000);} // totally M buckets, C cells for each bucket, num entries in L2, (num=0 means that L2 is empty).
+        FE_spacesaving_minus(int M,int C,int num):M(M),C(C),num(num) {bobhash = new BOBHash32(1000);} // totally M buckets, C cells for each bucket, num entries in L2, (num=0 means that L2 is empty).
         void Insert(int s)
         {
             int MIN = 1000000000, X;
