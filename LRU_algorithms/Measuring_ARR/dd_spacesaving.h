@@ -20,9 +20,8 @@ class dd_spacesaving
         struct kv {string ID; int f;} SS[10000005][40],Heap[10000005];  // Heap denotes L2, here f is the time, the larger the later
         BOBHash32 * bobhash;
         dd_spacesaving(int M,int C,int num):M(M),C(C),num(num) {bobhash = new BOBHash32(1000);} // totally M buckets, C cells for each bucket, num entries in L2, (num=0 means that L2 is empty).
-        int Insert(string s,int time)
+        int Insert(string s,int time) //this function insert the (id,timestamp) pair into our FE data structure
         {
-            //cout<<"inserting "<<time<<endl;
             for (int j=0; j<num; j++){
                 if(Heap[j].ID==s){Heap[j].ID=s; Heap[j].f=time; return -1;}
                 else if(Heap[j].f==0){Heap[j].ID=s; Heap[j].f=time; return 0;}
@@ -111,7 +110,7 @@ class dd_spacesaving
             }
         }
 
-        int SIMD_Insert(string s,int time)
+        int SIMD_Insert(string s,int time) //this function uses SIMD speedup to insert
         {
             uint32_t fp=*(uint32_t*)s.c_str();
             const __m256i item = _mm256_set1_epi32((int)fp);
@@ -243,7 +242,7 @@ class dd_spacesaving
             }
         }
 
-
+//this function print out the stored item in the cache
         vector<int> print(){
             vector<int>ans;
             for(int jaziel=0;jaziel<num;++jaziel)

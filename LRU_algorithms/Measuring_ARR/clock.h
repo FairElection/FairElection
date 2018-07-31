@@ -18,6 +18,7 @@ class Clock
     int refers(string);
 };
 
+//this function initialize a clock structure for approximate LRU
 Clock::Clock(int n)
 {
     csize = n;

@@ -30,7 +30,7 @@ int main()
 {
     int m=2000000;  // the number of flows
 
-    // preparing spacesaving
+    // prepare for Space-Savings using Fair Election
     int K=500;
     int MEM = 30;
 
@@ -66,14 +66,13 @@ int main()
 		dd1->Insert(s);
 		dd2->Insert(s);
 	}
-	//return 0;
 	dd->work();
 	dd1->work();
 	dd2->work();
 
-	// preparing true flow
+	// prepare for true flow
 
-    // Calculating PRE, ARE, AAE
+    // calculate PRE, ARE, AAE
     cout<<"Calculating"<<endl;
 
 

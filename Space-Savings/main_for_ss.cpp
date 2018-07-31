@@ -31,7 +31,7 @@ int main()
 {
     int m=2000000;  // the number of flows
 
-    // prepare for the spacesaving
+    // prepare for Space-Savings
     int K=500;
     int MEM=30;
     int cc;
@@ -68,9 +68,9 @@ int main()
 	ss1->work();
 	ss2->work();
 
-	// preparing for the true flows
+	// prepare for the true flows
 
-    // Calculating PRE, ARE, AAE
+    // calculate PRE, ARE, AAE
     cout<<"Calculating"<<endl;
 
 

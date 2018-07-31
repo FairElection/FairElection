@@ -24,7 +24,7 @@ class ssummary
         BOBHash32 * bobhash;
 
         ssummary(int K):K(K) {bobhash=new BOBHash32(1000);}
-        void clear()
+        void clear()  // clear stream-summary
         {
             memset(sum,0,sizeof(sum));
             memset(last,0,sizeof(Next));
@@ -37,47 +37,47 @@ class ssummary
             Right[0]=N;
             Left[N]=0;
         }
-        int getid()
+        int getid()  // get the current ID of the newly item
         {
             int i=ID[num--];
             last[i]=Next[i]=sum[i]=Next2[i]=0;
             return i;
         }
-        int location(string ST)
+        int location(string ST)  // get the location of an item
         {
             return (bobhash->run(ST.c_str(),ST.size()))%len2;
         }
-        void add2(int x,int y)
+        void add2(int x,int y)  // link the item into the list
         {
             Next2[y]=head2[x];
             head2[x]=y;
         }
-        int find(string s)
+        int find(string s) // check whether it is stored in stream-summary
         {
             for(int i=head2[location(s)];i;i=Next2[i])
               if(str[i]==s)return i;
             return 0;
         }
-        void linkhead(int i,int j)
+        void linkhead(int i,int j)  // link the item into the head of list
         {
             Left[i]=j;
             Right[i]=Right[j];
             Right[j]=i;
             Left[Right[i]]=i;
         }
-        void cuthead(int i)
+        void cuthead(int i)  // cut the item which is stored in the head of list
         {
             int t1=Left[i],t2=Right[i];
             Right[t1]=t2;
             Left[t2]=t1;
         }
-        int getmin()
+        int getmin()  // get the minimal frequency among all the items in the stream-summary
         {
             if (tot<K) return 0;
             if(Right[0]==N)return 1;
             return Right[0];
         }
-        void link(int i,int ww)
+        void link(int i,int ww)  // link two items 
         {
             ++tot;
             bool flag=(head[sum[i]]==0);
@@ -92,7 +92,7 @@ class ssummary
                 linkhead(sum[i],ww);
             }
         }
-        void cut(int i)
+        void cut(int i)  //cut it from the list
         {
             --tot;
             if(head[sum[i]]==i)head[sum[i]]=Next[i];
@@ -101,7 +101,7 @@ class ssummary
             if(t1)Next[t1]=t2;
             if(t2)last[t2]=t1;
         }
-        void recycling(int i)
+        void recycling(int i)  // reuse the ID
         {
             int w=location(str[i]);
             if (head2[w]==i)

@@ -68,9 +68,8 @@ class FE_spacesaving_minus
                 for (int j=0; j<C; j++)
                     if (SS[WZ][j].f<MIN) MIN=SS[WZ][j].f,X=j;
 
-                SS[WZ][X].f--;
+                SS[WZ][X].f--;  // minus 1
                 if (SS[WZ][X].f==0) SS[WZ][X].ID=s,SS[WZ][X].f=1;
-            //}
             }
         }
         struct Node {int x; int y;} q[3000000];

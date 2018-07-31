@@ -68,10 +68,7 @@ class FE_spacesaving_replace
                 MIN = 1000000000, X = 0;
                 for (int j=0; j<C; j++)
                     if (SS[WZ][j].f<MIN) MIN=SS[WZ][j].f,X=j;
-                if ((double)rand()/32768<(double)1/(SS[WZ][X].f+1.0)) SS[WZ][X].ID=s;
-             //  SS[WZ][X].f--;
-             //   if (SS[WZ][X].f==0) SS[WZ][X].ID=s,SS[WZ][X].f=1;
-            //}
+                if ((double)rand()/32768<(double)1/(SS[WZ][X].f+1.0)) SS[WZ][X].ID=s;  // replacement with a probability
             }
         }
         struct Node {int x; int y;} q[3000000];
@@ -84,7 +81,7 @@ class FE_spacesaving_replace
                 for (int j=0; j<C; j++) {q[CNT].x=SS[i][j].ID; q[CNT].y=SS[i][j].f; CNT++;}
             sort(q,q+CNT,cmp);
         }
-        pair<int ,int> Query(int k)
+        pair<int ,int> Query(int k) 
         {
             return make_pair(q[k].x,q[k].y);
         }

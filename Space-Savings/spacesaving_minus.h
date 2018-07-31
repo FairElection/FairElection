@@ -30,7 +30,7 @@ class spacesaving_minus
             {
                 int q;
 
-                if (ss->tot<M2 || ss->getmin()==1)
+                if (ss->tot<M2 || ss->getmin()==1)  // if it can be inserted into Space-Saving
                 {
 
 
@@ -48,8 +48,8 @@ class spacesaving_minus
                     ss->cut(ss->head[t]);
                     ss->recycling(tmp);
                 }
-                }
-                else
+                } 
+                else  // minus 1 of frequency of the original item
                 {
                     int t=ss->Right[0];
                     int tmp=ss->head[t];

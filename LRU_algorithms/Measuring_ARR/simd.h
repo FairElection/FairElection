@@ -23,7 +23,7 @@ public:
 
     BOBHash32 *bobhash;
 
-    spacesaving(int M, int C, int num):bucket_num(M), cell_per_bucket(C), l2_num(num)
+    spacesaving(int M, int C, int num):bucket_num(M), cell_per_bucket(C), l2_num(num) //this function initialize the FE structure
     {
         memset(SS_key, 0, sizeof(SS_key));
         memset(SS_val, 0, sizeof(SS_val));
@@ -33,7 +33,7 @@ public:
     }
     ~spacesaving(){delete bobhash;}
 
-    int insert(int key,int time)
+    int insert(int key,int time)//this function insert a (key,time)pair to FE
         {
             uint32_t fp = *(uint32_t*)&key;
 

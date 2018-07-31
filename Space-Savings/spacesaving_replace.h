@@ -48,7 +48,7 @@ class spacesaving_replace
                 }
 
                 } else
-                if ((double)rand()/32768 < (double)1/(ss->getmin()+1))
+                if ((double)rand()/32768 < (double)1/(ss->getmin()+1))  // replace the original algorithm with a probability 1/(min+1)
                 {
                     int MIN=ss->getmin();
                     int t=ss->Right[0];

@@ -15,9 +15,9 @@ class FE_spacesaving_incre
 {
     public:
         int M,C,num;
-        struct kv {int ID; int f; int tag;} SS[100005][35],Heap[1005];  // Heap denotes L2
+        struct kv {int ID; int f; int tag;} SS[100005][35],Heap[1005];  // Heap denotes coordinator
         BOBHash32 * bobhash;
-        FE_spacesaving_incre(int M,int C,int num):M(M),C(C),num(num) {bobhash = new BOBHash32(1000);} // totally M buckets, C cells for each bucket, num entries in L2, (num=0 means that L2 is empty).
+        FE_spacesaving_incre(int M,int C,int num):M(M),C(C),num(num) {bobhash = new BOBHash32(1000);} // totally M buckets, C cells for each bucket, num entries in coordinator, (num=0 means that coordinator is empty).
         void Insert(int s,int tt=0)
         {
             int MIN = 1000000000, X=0;
@@ -50,7 +50,7 @@ class FE_spacesaving_incre
                 for (int j=0; j<C; j++)
                     if (SS[WZ][j].f<MIN) MIN=SS[WZ][j].f,Y=j;
 
-                SS[WZ][Y].f++; SS[WZ][Y].ID=s;
+                SS[WZ][Y].f++; SS[WZ][Y].ID=s;  // plus 1
 
             }
             if (SS[WZ][Y].f>MINN)
@@ -75,7 +75,7 @@ class FE_spacesaving_incre
         }
         struct Node {int x; int y;} q[3000000];
         static int cmp(Node i,Node j) {return i.y>j.y;}
-        void work(int pl=0)
+        void work(int pl=0) //sort the frequencies of items which are stored in the stream-summary
         {
             int CNT=0;
             for (int i=0; i<num; i++) {q[CNT].x=Heap[i].ID; q[CNT].y=Heap[i].f; CNT++;}
@@ -83,7 +83,7 @@ class FE_spacesaving_incre
                 for (int j=0; j<C; j++) {q[CNT].x=SS[i][j].ID; q[CNT].y=SS[i][j].f; CNT++;}
             sort(q,q+CNT,cmp);
         }
-        pair<int ,int> Query(int k)
+        pair<int ,int> Query(int k)  // output the k-th largest frequency and the corresponding item
         {
             return make_pair(q[k].x,q[k].y);
         }
